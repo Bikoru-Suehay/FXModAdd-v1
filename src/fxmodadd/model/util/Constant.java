@@ -42,17 +42,9 @@ public class Constant {
         COMMAND = "java --module-path=" + CONTAINER + "\\SDK\\lib --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web -jar " + JARDIR;
         try {
             Process p = Runtime.getRuntime().exec(COMMAND);
-            BufferedReader brError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-            System.out.println("Los errores son ");
-            String line;
-            String error="";
-            while ((line = brError.readLine()) != null) {
-                error+=line;
-            }
-            brError.close();
-            JOptionPane.showMessageDialog(null,error);
             return true;
-        } catch (IOException ex) {
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,ex);
             return false;
         }
     }
@@ -68,17 +60,9 @@ public class Constant {
         System.out.println(COMMAND);
         try {
             Process p = Runtime.getRuntime().exec(COMMAND);
-            BufferedReader brError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-            System.out.println("Los errores son ");
-            String line;
-            String error="";
-            while ((line = brError.readLine()) != null) {
-                error+=line;
-            }
-            brError.close();
-            JOptionPane.showMessageDialog(null,error);
             return true;
-        } catch (IOException ex) {
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,ex);
             return false;
         }
     }
