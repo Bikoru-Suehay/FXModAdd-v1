@@ -28,23 +28,23 @@ public class Constant {
             e.getReason();
         }
     }
-    private static String CONTAINER = DIR.substring(0, DIR.lastIndexOf("\\"));
+    private static String CONTAINER = DIR.substring(0, DIR.lastIndexOf(File.separator));
     private static String JARDIR;
     private static String COMMAND;
 
     public static boolean autoRun() {
         File aux = new File(CONTAINER);
         for (File f : aux.listFiles()) {
-            if (f.getName().contains(".jar")&&!f.getName().equals("FXModAdd.jar")) {
+            if (f.getName().contains(".jar") && !f.getName().equals("FXModAdd.jar")) {
                 JARDIR = f.getAbsolutePath();
             }
         }
-        COMMAND = "java --module-path=" + CONTAINER + "\\SDK\\lib --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web -jar " + JARDIR;
+        COMMAND = "java --module-path=" + CONTAINER + File.separator + "SDK" + File.separator + "lib --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web -jar " + JARDIR;
         try {
             Process p = Runtime.getRuntime().exec(COMMAND);
             return true;
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,ex);
+            JOptionPane.showMessageDialog(null, ex);
             return false;
         }
     }
@@ -52,17 +52,17 @@ public class Constant {
     public static boolean autoRun(String name, String modules) {
         File aux = new File(CONTAINER);
         for (File f : aux.listFiles()) {
-            if (f.getName().contains(".jar") && f.getName().toLowerCase().contains(name.trim().toLowerCase())&&!f.getName().equals("FXModAdd.jar")) {
+            if (f.getName().contains(".jar") && f.getName().toLowerCase().contains(name.trim().toLowerCase()) && !f.getName().equals("FXModAdd.jar")) {
                 JARDIR = f.getAbsolutePath();
             }
         }
-        COMMAND = "java --module-path=" + CONTAINER + "\\SDK\\lib --add-modules=" + modules + " -jar " + JARDIR;
+        COMMAND = "java --module-path=" + CONTAINER + File.separator + "SDK" + File.separator + "lib --add-modules=" + modules + " -jar " + JARDIR;
         System.out.println(COMMAND);
         try {
             Process p = Runtime.getRuntime().exec(COMMAND);
             return true;
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,ex);
+            JOptionPane.showMessageDialog(null, ex);
             return false;
         }
     }

@@ -34,7 +34,7 @@ public class App extends javax.swing.JFrame {
     public App() {
         initComponents();
         this.setLocationRelativeTo(null);
-        visibility(true,false);
+        visibility(true, false);
     }
 
     /**
@@ -209,7 +209,7 @@ public class App extends javax.swing.JFrame {
             }
         });
         panelRound2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 20, 20));
+        jPanel1.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 5, 20, 20));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
@@ -516,23 +516,35 @@ public class App extends javax.swing.JFrame {
     private void panelRound10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound10MouseClicked
         String aux = "";
         ArrayList<JRadioButton> auxRadBut = new ArrayList<>();
-        auxRadBut.add(this.jRadioButtonBase1);
-        auxRadBut.add(this.jRadioButtonControls);
-        auxRadBut.add(this.jRadioButtonFXML);
-        auxRadBut.add(this.jRadioButtonGraphics);
-        auxRadBut.add(this.jRadioButtonMedia1);
-        auxRadBut.add(this.jRadioButtonSwing1);
-        auxRadBut.add(this.jRadioButtonWeb);
+        if (this.jRadioButtonBase1.isSelected()) {
+            auxRadBut.add(this.jRadioButtonBase1);
+        }
+        if (this.jRadioButtonControls.isSelected()) {
+            auxRadBut.add(this.jRadioButtonControls);
+        }
+        if (this.jRadioButtonFXML.isSelected()) {
+            auxRadBut.add(this.jRadioButtonFXML);
+        }
+        if (this.jRadioButtonGraphics.isSelected()) {
+            auxRadBut.add(this.jRadioButtonGraphics);
+        }
+        if (this.jRadioButtonMedia1.isSelected()) {
+            auxRadBut.add(this.jRadioButtonMedia1);
+        }
+        if (this.jRadioButtonSwing1.isSelected()) {
+            auxRadBut.add(this.jRadioButtonSwing1);
+        }
+        if (this.jRadioButtonWeb.isSelected()) {
+            auxRadBut.add(this.jRadioButtonWeb);
+        }
         for (int i = 0; i < auxRadBut.size(); i++) {
-            if (auxRadBut.get(i).isSelected()) {
-                if (!aux.isEmpty()&& i < auxRadBut.size() - 1) {
-                    aux += "," + auxRadBut.get(i).getText();
-                } else {
-                    aux += auxRadBut.get(i).getText();
-                }
+            if (!aux.isEmpty()) {
+                aux += "," + auxRadBut.get(i).getText();
+            } else {
+                aux += auxRadBut.get(i).getText();
             }
         }
-        if (Constant.autoRun(this.jTextField1.getText(), aux)){
+        if (Constant.autoRun(this.jTextField1.getText(), aux)) {
             this.dispose();
         }
     }//GEN-LAST:event_panelRound10MouseClicked
